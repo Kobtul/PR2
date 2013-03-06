@@ -8,12 +8,12 @@ package pr2uk1;
  *
  * @author iliusvla
  */
-public class PrvekSeznamu {
+public class P {
 
     private String jmeno , prijmeni, email, ulice, cislo, mesto;
     private int tel, PSC;
     
-    public PrvekSeznamu(String _jmeno,String _prijmeni){
+    public P(String _jmeno,String _prijmeni){
         jmeno = _jmeno;
         prijmeni = _prijmeni;
         email = "";
@@ -24,7 +24,7 @@ public class PrvekSeznamu {
         PSC = 0;
     }
     
-    public PrvekSeznamu(String _jmeno,String _prijmeni, String _ulice, String _cislo, String _mesto, int _tel, int _PSC, String _email){
+    public P(String _jmeno,String _prijmeni, String _ulice, String _cislo, String _mesto, int _tel, int _PSC, String _email){
         jmeno = _jmeno;
         prijmeni = _prijmeni;
         ulice = _ulice;
@@ -62,7 +62,7 @@ public class PrvekSeznamu {
     @Override
     public String toString(){
         String result = "";
-        result += "Jmeno: " + jmeno + " Prijmeni: " + prijmeni + "\nAdresa: " + 
+        result += "Jmeno: " + jmeno + " " + prijmeni + "\nAdresa: " + 
                 mesto + ", " + ulice + ", "+cislo + ", " + PSC + "\nEmail: " + email + "\nTel.c.: "+tel;       
         return result;
     }
