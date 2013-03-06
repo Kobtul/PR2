@@ -11,10 +11,19 @@ import java.util.List;
  *
  * @author iliusvla
  */
-public class Seznam {
-    List seznam = new ArrayList();
+public class  Seznam <T>{
+    private List seznam = new ArrayList();
     
-    public Seznam(){
+    public   Seznam(){
          
+    }
+    public void add(Object obj){
+        seznam.add(obj);
+    }
+    public Object get(int i){
+        return seznam.get(i);
+    }
+    public boolean contains(Object obj){
+        return seznam.contains(obj);
     }
 }
