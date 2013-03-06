@@ -26,4 +26,11 @@ public class  Seznam <T>{
     public boolean contains(Object obj){
         return seznam.contains(obj);
     }
+    public String toString(){
+        String result = "";
+        for (Object a: seznam){
+            result += a.toString() + "\n_____________________\n";
+        }        
+        return result;
+    }
 }
