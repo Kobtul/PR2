@@ -12,6 +12,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
  
+/*http://iliusvla.blogspot.cz/2013/03/light-sensor-on-android.html*/
+
 
 public class MainActivity extends Activity implements SensorEventListener {
   private SensorManager sensorManager; 
