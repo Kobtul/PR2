@@ -28,11 +28,10 @@ public class Prvek {
         jmeno = _jmeno;
         prijmeni = _prijmeni;
         ulice = _ulice;
-        if (numPlace(_tel) == 9){
-        tel = _tel;
-        }
-        else {
-             throw new Exception("Cislo ma spatny format!");
+        if (numPlace(_tel) == 9) {
+            tel = _tel;
+        } else {
+            throw new Exception("Cislo ma spatny format!");
         }
         mesto = _mesto;
         tel = _tel;
@@ -56,12 +55,13 @@ public class Prvek {
         mesto = _mesto;
     }
 
-    public void addTelNumber(int _tel) throws Exception {
-        if (numPlace(_tel) == 9){
-        tel = _tel;
-        }
-        else {
-             throw new Exception("Cislo ma spatny format!" + numPlace(_tel));
+    public boolean addTelNumber(int _tel) {
+        if (numPlace(_tel) == 9) {
+            tel = _tel;
+            return true;
+        } else {
+            System.out.println("Cislo ma spatny format");
+            return false;
         }
     }
 
@@ -72,15 +72,37 @@ public class Prvek {
     @Override
     public String toString() {
         String result = "";
-        result += "Jmeno: " + jmeno + " " + prijmeni + "\nAdresa: "
-                + mesto + ", " + ulice + ", " + cislo + ", " + PSC + "\nEmail: " + email + "\nTel.c.: " + tel + "\n______________________________\n";
+         
+
+        result += "Jmeno: " + jmeno + " " + prijmeni;
+
+        result += "\nAdresa: ";
+        if (mesto != "") {
+            result += mesto;
+        }
+        if (ulice != "") {
+            result += ", " + ulice;
+        }
+        if (cislo != "") {
+            result += ", " + cislo;
+        }
+        if (PSC != 0) {
+            result += ", " + PSC;
+        }
+        if (email != "") {
+            result += "\nEmail: " + email;
+        }
+        if (tel != 0) {
+            result += "\nTel.c.: " + tel;
+        }
+        result += "\n______________________________\n";
         return result;
-    }    
-    
-    int getNumber(){
+    }
+
+    int getNumber() {
         return tel;
     }
-    
+
     static int numPlace(int num) {
         int cnt = 0;
         while (num > 0) {

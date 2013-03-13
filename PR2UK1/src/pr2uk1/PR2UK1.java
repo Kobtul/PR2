@@ -19,7 +19,6 @@ public class PR2UK1 {
      */
     static int t;
     static Scanner sc = new Scanner(System.in);
-
     public static void main(String[] args) throws Exception {
 
 //////////////////////////////////////////////////
@@ -42,55 +41,76 @@ public class PR2UK1 {
 
         System.out.println(s.toString() + "\n___________________________________\n");
 //////////////////////////////////////////////
-        
+
         while (true) {
             System.out.println("1) Create new Prvek");
             System.out.println("2) Find Prvek in seznam");
-            System.out.println("3) Exit");
+            System.out.println("3) Vypsat seznam");
+            System.out.println("4) Exit");
             scan();
             if (t == 1) {
                 String jmeno, prijmeni;
                 int tel;
                 System.out.println("Input first name.");
-                try {
-                    jmeno = sc.next();
-                } catch (InputMismatchException e) {
-                    throw e;
+                while (true) {
+                    try {
+                        jmeno = sc.next();
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Try again");
+                    }
                 }
                 System.out.println("Input last name (or will)");
-                try {
-                    prijmeni = sc.next();
-                } catch (InputMismatchException e) {
-                    throw e;
+                while (true) {
+                    try {
+                        prijmeni = sc.next();
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Try again");
+                    }
                 }
-
                 Prvek temp = new Prvek(jmeno, prijmeni);
                 System.out.println("Input tel.");
+
                 try {
                     tel = sc.nextInt();
-                } catch (InputMismatchException e) {
-                    throw e;
+
+                } catch (NumberFormatException e) {
+                    tel = sc.nextInt();
                 }
-                temp.addTelNumber(tel);
-                System.out.println("1) Smazat prvek? \n2) Pridat do seznamu\n3) Exit");
+
+                while (!temp.addTelNumber(tel)) {
+                    temp.addTelNumber(tel);
+                }
+                System.out.println("1) Smazat prvek? \n2) Pridat do seznamu\n3) Pridat a vypsat seznam\n4) Exit");
                 scan();
                 if (t == 1) {
                     temp = null;
                 } else if (t == 2) {
                     s.add(temp);
+
+                } else if (t == 3) {
+                    s.add(temp);
+                    System.out.println(s.toString());
                 } else {
                     continue;
                 }
-
             } else if (t == 2) {
                 System.out.println("Input tel.");
-                int tel;
-                try {
-                    tel = sc.nextInt();
-                } catch (InputMismatchException e) {
-                    throw e;
+                int tel = 0;
+                while (true) {
+                    try {
+                        tel = sc.nextInt();
+                        break;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Wrong! Try again!");
+                        continue;
+                    }
                 }
                 System.out.println(s.getByNum(tel).toString());
+            } else if (t == 3) {
+                System.out.println(s.toString());
+
             } else {
                 System.exit(0);
             }
@@ -100,7 +120,7 @@ public class PR2UK1 {
     static void scan() throws InputMismatchException, Exception {
         try {
             t = sc.nextInt();
-            if (t > 3 || t < 1) {
+            if (t > 4 || t < 1) {
                 throw new Exception("Cislo ma spatny format!");
             }
         } catch (InputMismatchException e) {
