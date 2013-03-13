@@ -11,26 +11,45 @@ import java.util.List;
  *
  * @author iliusvla
  */
-public class  Seznam <T>{
-    private List seznam = new ArrayList();
-    
-    public   Seznam(){
-         
+public class Seznam {
+
+    private List<Prvek> seznam = new ArrayList<Prvek>();
+
+    public Seznam() {
     }
-    public void add(Object obj){
+
+    public boolean add(Prvek obj) throws Exception {
+        for (Prvek p : seznam) {
+            if (p.getNumber() == obj.getNumber()) {
+                throw new Exception("Cislo tel. v seznamu uz existuje!");
+            }
+        }
         seznam.add(obj);
+        return true;
     }
-    public Object get(int i){
+
+    public Prvek get(int i) {
         return seznam.get(i);
     }
-    public boolean contains(Object obj){
+
+    public boolean contains(Prvek obj) {
         return seznam.contains(obj);
     }
-    public String toString(){
+
+    public String toString() {
         String result = "";
-        for (Object a: seznam){
-            result += a.toString() + "\n_____________________\n";
-        }        
+        for (Prvek a : seznam) {
+            result += a.toString();
+        }
         return result;
+    }
+    
+    public Prvek getByNum(int num){
+        for (Prvek p : seznam){
+            if (p.getNumber() == num){
+                return p;
+            }
+        }
+        return null;
     }
 }
