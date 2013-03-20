@@ -5,6 +5,8 @@
 package pr2uk1;
 
 import java.util.ArrayList;
+import java.util.Collections;
+ 
 import java.util.List;
 
 /**
@@ -52,4 +54,26 @@ public class Seznam {
         }
         return null;
     }
+    
+    public List<Prvek> compTel(){
+        List<Prvek> seznam1 = new ArrayList<Prvek>();
+        seznam1.addAll(seznam);
+         Collections.sort(seznam1,new TelComparator());
+         return seznam1;
+    }
+     public List<Prvek> compJmen(){
+        List<Prvek> seznam1 = new ArrayList<Prvek>();
+        seznam1.addAll(seznam);
+         Collections.sort(seznam1,new JmenoComparator());
+         return seznam1;
+    }
+     
+     public void findSubString (String a){
+     //boolean contains = string.contains(substring);    
+         for (Prvek p : seznam){
+             if (p.getJmeno().contains(a) || p.getPrijmeni().contains(a)||p.getEmail().contains(a)){
+                 System.out.println("\n_____________________\n"+p.toString() + "\n_________________\n");
+             }
+         }
+     }
 }

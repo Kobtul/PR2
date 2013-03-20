@@ -4,11 +4,13 @@
  */
 package pr2uk1;
 
+import java.util.Comparator;
+
 /**
  *
  * @author iliusvla
  */
-public class Prvek {
+public class Prvek  {
 
     private String jmeno, prijmeni, email, ulice, cislo, mesto;
     private int tel, PSC;
@@ -72,7 +74,7 @@ public class Prvek {
     @Override
     public String toString() {
         String result = "";
-         
+
 
         result += "Jmeno: " + jmeno + " " + prijmeni;
 
@@ -112,4 +114,23 @@ public class Prvek {
         }
         return cnt;
     }
+    String getJmeno(){
+        return this.jmeno;
+    }
+      String getPrijmeni(){
+        return this.prijmeni;
+    }
+        String getEmail(){
+        return this.email;
+    }
+/*
+    @Override
+    public int compareTo(Object o) {
+        Prvek a1 = (Prvek) o;
+        return a1.jmeno.compareTo(this.jmeno);
+        //if (a1.jmeno )
+    }*/
+
+   
+      
 }

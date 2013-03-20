@@ -19,6 +19,7 @@ public class PR2UK1 {
      */
     static int t;
     static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) throws Exception {
 
 //////////////////////////////////////////////////
@@ -31,15 +32,24 @@ public class PR2UK1 {
         c1.addTelNumber(123456789);
 
 
-        Prvek c2 = new Prvek("Mad", "Man", "2st", "1", "LA", 123456788, 5161615, "a;ksf@asd.csa");
-
+        Prvek c2 = new Prvek("Aad", "Man", "2st", "1", "LA", 123456788, 5161615, "a;ksf@asd.csa");
+        Prvek c3 = new Prvek("Zad", "Man", "2st", "1", "LA", 100000000, 5161615, "a;ksf@asd.csa");
+        Prvek c4 = new Prvek("Wad", "Man", "2st", "1", "LA", 999999999, 5161615, "a;ksf@asd.csa");
         Seznam s = new Seznam();
 
         s.add(c1);
         s.add(c2);
+        s.add(c3);
+        s.add(c4);
 
+        System.out.println( "\n___________________________________\n");
+       // s.findSubString("a");
+        //s.findSubString("ad");
+        //s.findSubString("csa");
+        //System.out.println(s.toString() + "\n___________________________________\n");
 
-        System.out.println(s.toString() + "\n___________________________________\n");
+        //System.out.println(s.compTel().toString() + "\n___________________________________\n");
+       // System.out.println(s.compJmen().toString() + "\n___________________________________\n");
 //////////////////////////////////////////////
 
         while (true) {
@@ -50,7 +60,7 @@ public class PR2UK1 {
             scan();
             if (t == 1) {
                 String jmeno, prijmeni;
-                int tel;
+                int tel = 0;
                 System.out.println("Input first name.");
                 while (true) {
                     try {
@@ -76,7 +86,7 @@ public class PR2UK1 {
                     tel = sc.nextInt();
 
                 } catch (NumberFormatException e) {
-                    tel = sc.nextInt();
+                    System.out.println("Try again");
                 }
 
                 while (!temp.addTelNumber(tel)) {
@@ -107,7 +117,11 @@ public class PR2UK1 {
                         continue;
                     }
                 }
-                System.out.println(s.getByNum(tel).toString());
+                if (s.getByNum(tel) != null) {
+                    System.out.println(s.getByNum(tel).toString());
+                } else {
+                    System.out.println("Number not founded!");
+                }
             } else if (t == 3) {
                 System.out.println(s.toString());
 
